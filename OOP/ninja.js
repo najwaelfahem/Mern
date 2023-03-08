@@ -24,3 +24,22 @@ drinkSake() {
 }
 const ninja1 = new Ninja("Hyabusa","good");
 ninja1.sayName().showStats().drinkSake().showStats();
+
+class Sensei extends Ninja{
+
+    constructor(name,health){
+        super(name)
+        this.speed=10
+        this.strength=10
+        this.health=200
+        this.wisdom=10
+        
+    }
+    speakWisdom(){
+        super.drinkSake();
+        console.log(".......")
+    }
+}
+const superSensei= new Sensei("master splinter")
+superSensei.speakWisdom();
+superSensei.showStats();
