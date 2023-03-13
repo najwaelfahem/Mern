@@ -17,6 +17,7 @@ const Forms = (props) => {
     const [confirmPassword,setConfirmPassword] = useState("")
     const [firstnameError, setFirstNameError] = useState(false)
     const [lastnameError, setLastNameError] = useState(false)
+    const[emailError,setEmailError] = useState(false)
     const formHandler = (e)=>{
         e.preventDefault()
         console.log("Form Submitted 🧨🎇");
@@ -57,19 +58,32 @@ const Forms = (props) => {
             setLastNameError(true)
         }
         else{
-            setlastNameError(false)
+            setLastNameError(false)
+            console.log("Username is more than 3🎈 ");
+        }
+    }
+    const handleEmail = (e)=>{
+        e.preventDefault()
+        setEmail(e.target.value)
+        console.log("The value = ", e.target.value);
+        if(e.target.value.length<3 ) { 
+            console.log("Username must be more than 3 ");
+            setEmailError(true)
+        }
+        else{
+            setEmailError(false)
             console.log("Username is more than 3🎈 ");
         }
     }
   return (
     <fieldset>
-        <legend>From.jsx</legend> 
+        {/* <legend>From.jsx</legend> 
         <p>firstname : {JSON.stringify(firstname)}</p> 
         <p>lastname : {JSON.stringify(lastname)}</p>
         <p>Email : {JSON.stringify(email)}</p>
         <p>Password : {JSON.stringify(password)}</p>
         <p>confirmPassword : {JSON.stringify(confirmPassword)}</p>
-        <hr />
+        <hr /> */}
         <form onSubmit={formHandler} >
             <div>
                 <label >firstname : </label>
@@ -85,7 +99,7 @@ const Forms = (props) => {
             <br />
             <div>
                 <label >Email : </label>
-                <input onChange={(e)=>{setEmail(e.target.value)}} value={email}/> 
+                <input onChange={(e)=>{handleEmail(e.target.value)}} value={email}/> 
                                  {/* Double binding */}
             </div>
             <br />
