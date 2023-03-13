@@ -1,8 +1,9 @@
 import './App.css';
+import axios from 'axios';
 import { useState , useEffect} from 'react';
-
 function App() {
   const [fetchPokemon, setFetchPokemon] = useState([])
+  const [axiosPokemon, setAxiosPokemon] = useState([])
   
 
   // - fetch Vanilla JS
@@ -16,7 +17,13 @@ function App() {
       catch(error => console.log(error))
   }
 
-  
+  const axiosSuperHeros = ()=>{
+    axios.get("https://pokeapi.co/api/v2/pokemon?limit=807")
+    .then(response=> {
+      setAxiosPokemon(response.data.results)
+      console.log(response.data)
+    }).catch(error=>console.log(error))
+  }
 
   
   
@@ -24,6 +31,7 @@ function App() {
     <div className="App">
       <h1>pokemon</h1>
       <button onClick={fetchPokemonn}>fetch pokemon</button>
+      <button onClick={axiosSuperHeros}>axios pokemon</button>
       
       {/* <p>{JSON.stringify(fetchSuperHerosArray)}</p> */}
       
@@ -48,6 +56,23 @@ function App() {
           }
         </tbody>
       </table>
+      <table style={{backgroundColor:'silver'}}>
+        
+        <tbody>
+          {
+            axiosPokemon.map(hero => {
+              return (
+                <tr key={hero.id}>
+                  
+                  <td>{hero.name}</td>
+                  
+                </tr>
+              )
+            })
+          }
+        </tbody>
+      </table>
+      
       
       
       
