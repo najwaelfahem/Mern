@@ -1,15 +1,15 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router";
+import { useNavigate } from "react-router";
 
 const Form = (props) => {
 
   const [type, setType] = useState("people");
   const [id, setId] = useState(1);
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const search = (e) => {
     e.preventDefault();
-    history.push(`/${type}/${id}`);
+    navigate(`/${type}/${id}`);
   }
 
   return (
@@ -21,7 +21,7 @@ const Form = (props) => {
       </select>
       <label> id: </label>
       <input type="number" min={1} onChange={e => setId(e.target.value)} value={id} />
-      <input type="submit" value="Seach" />
+      <input type="submit" value="Search" />
     </form>
   );
 }

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import axios from "axios";
 
-const PeopleComponent = (props) => {
+const People = (props) => {
 
   const [data, setData] = useState({});
   const { id } = useParams();

@@ -1,24 +1,18 @@
-import React from "react";
-
 import Form from "./components/Form";
 import People from "./components/People";
 import Planet from "./components/Planet";
-import { Routes, Route, Link,Switch } from 'react-router-dom';
+import { Routes, Route} from 'react-router-dom';
 
 function App() {
   return (
-    <BrowserRouter>
-      <h1>Luke API-walker</h1>
+<div>
+   <h1>Luke API-walker</h1>
       <Form />
-      <Switch>
-        <Route path="/people/:id">
-          <People />
-        </Route>
-        <Route path="/planets/:id">
-          <Planet />
-        </Route>
-      </Switch>
-    </BrowserRouter>
+      <Routes>
+        <Route path="/people/:id" element={<People/>}/>
+        <Route path="/planets/:id" element={<Planet/>}/>      
+      </Routes>
+      </div>
   );
 }
 
