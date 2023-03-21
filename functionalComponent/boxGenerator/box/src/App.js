@@ -8,11 +8,7 @@ function App() {
   const addBox= (newBox)=>{
     setBoxes([...boxes,newBox])
   }
-  // const updateBox=(id)=>{
-  //   const newBoxes = [...boxes]
-  //   newBoxes[id]
-  //   setBoxes (newBoxes)
-  // }
+  
   return (
     <div className="App">
       <Form addBox= {addBox} />
